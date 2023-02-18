@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 import axios from "axios";
 import classnames from "classnames";
+import PropTypes from "prop-types";
+
+import { connect } from "react-redux";
 const initialState = {
   name: "Abhi",
   email: "",
   password: "",
   confirmPassword: "",
 };
-const Register2 = () => {
+
+// rfcreduxp:
+// react function componet redux prop types.
+
+export const Register2 = (props) => {
   const [formData, setFormData] = useState(initialState);
 
   const { name, email, password, confirmPassword } = formData;
@@ -15,7 +22,6 @@ const Register2 = () => {
 
   const [error, setError] = useState({});
   // to hold the error related messages from restthe rest api call.
-
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     // ...formData : spread operator.
@@ -50,7 +56,7 @@ const Register2 = () => {
   return (
     <>
       <section class="container">
-        <h1 class="large text-primary">Sign Up for Devconnector</h1>
+        <h1 class="large text-primary">Sign Up for </h1>
         <p class="lead">
           <i class="fas fa-user"></i> Create Your Account
         </p>
@@ -100,7 +106,7 @@ const Register2 = () => {
             <input
               type="password"
               placeholder="Confirm Password"
-              name="confirmPassword"
+              name="password2"
               minLength="6"
               value={confirmPassword}
               onChange={onChange}
@@ -119,4 +125,12 @@ const Register2 = () => {
   );
 };
 
-export default Register2;
+Register2.propTypes = {
+  second: PropTypes.third,
+};
+
+const mapStateToProps = (state) => ({});
+
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register2);
